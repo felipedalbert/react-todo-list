@@ -1,3 +1,5 @@
+import './Todo-list.css'
+
 function TodoList(){
     return (
         <div>
@@ -9,13 +11,15 @@ function TodoList(){
             <div className='lista-tarefas'>
                 <div className='item'>
                     <span>Tarefa de exemplo</span>
-                    <button>Deletar</button>
+                    <button className='del'>Deletar</button>
                 </div>
                 <div className='item check'>
                     <span>Tarefa de exemplo</span>
-                    <button>Deletar</button>
+                    <button className='del'>Deletar</button>
                 </div>
+                
             </div>
+            <button className='deleteAll'>Deletar Tudo</button>
         </div>
         
     )
