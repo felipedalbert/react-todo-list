@@ -90,6 +90,7 @@ button.add:active{
 }
 
 .item span {
+    text-align: start;
     width: 100%;
     color: white;
     margin-right: 10px;
@@ -131,12 +132,11 @@ button.deleteAll{
     border: 1px solid #ff004c;
     background: none;
     padding: 15px;
-    margin-top: 10px;
+    margin: 35px auto 0;
     color: #ff004c;
     font-weight: 700;
     border-radius: 5px;
     width: 600px;
-    margin: 0 auto;
     transition: ease-in-out .2s;
     cursor: pointer;
     max-width: 600px;

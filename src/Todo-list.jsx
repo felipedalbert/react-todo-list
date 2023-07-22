@@ -1,4 +1,4 @@
-import { useState, useEffet } from 'react';
+import { useState, useEffect } from 'react';
 import './Todo-list.css'
 import todoIllustration from './assets/todoIllustration.svg';
 
@@ -17,6 +17,18 @@ function TodoList(){
         document.getElementById('input-entrada').focus()
     }
 
+    function clicked(index){
+        const listaAux = [...lista]
+        listaAux[index].isCompleted = listaAux[index].isCompleted ? false : true
+        setLista(listaAux)
+    }
+
+    function deleted(index){
+        const listaAux = [...lista]
+        listaAux.splice(index, 1)
+        setLista(listaAux)
+    }
+
     return (
         <div>
             <h1>Lista de tarefas</h1>
@@ -33,20 +45,18 @@ function TodoList(){
             </form>
 
             <div className='lista-tarefas' style={{textAlign: 'center'}}>
-                
-                    {
-                        lista.length < 1 ? <img src={todoIllustration} style={{marginTop: "-65px"}} />
-                        : lista.map((item, index) =>(
-                            <div className='item' key={index}>
-                                <span>{item.text}</span>
-                                <button className='del'>Deletar</button>
-                            </div>   
-                        ))
-                    }
-                
+                {
+                    lista.length < 1 ? <img src={todoIllustration} style={{marginTop: "-65px"}} />
+                    : lista.map((item, index) =>(
+                        <div className={item.isCompleted ? 'item check' : 'item'} key={index}>
+                            <span onClick={()=>{clicked(index)}}>{item.text}</span>
+                            <button onClick={()=>{deleted(index)}} className='del'>Deletar</button>
+                        </div>   
+                    ))
+                }
             </div>
 
-            {lista.length > 0 && <button className='deleteAll' >Deletar Tudo</button>}
+            {lista.length > 0 && <button onClick={()=>{setLista([])}} className='deleteAll' >Deletar Tudo</button>}
         </div>
         
     )
