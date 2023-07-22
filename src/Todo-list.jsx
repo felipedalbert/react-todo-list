@@ -4,8 +4,13 @@ import todoIllustration from './assets/todoIllustration.svg';
 
 function TodoList(){
 
-    const[lista, setLista] = useState([])
+    const listStorage = localStorage.getItem('Lista')
+    const[lista, setLista] = useState(listStorage ? JSON.parse(listStorage): [])
     const [novoItem, setNovoItem] = useState("")
+
+    useEffect(()=>{
+        localStorage.setItem('Lista', JSON.stringify(lista))
+    }, [lista])
 
     function addItem(form){
         form.preventDefault()
